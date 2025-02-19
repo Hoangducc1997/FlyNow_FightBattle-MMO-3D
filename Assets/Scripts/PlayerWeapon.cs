@@ -4,7 +4,8 @@ using UnityEngine.InputSystem;
 public class PlayerWeapon : MonoBehaviour
 {
     bool isShooting = false;
-    [SerializeField] float speed = 1.0f;
+    [SerializeField] GameObject[] lazers;
+
     private void Update()
     {
         ProcessShooting();
@@ -17,6 +18,10 @@ public class PlayerWeapon : MonoBehaviour
 
     void ProcessShooting()
     {
-        Debug.Log("Fire");
+        foreach (var lazer in lazers) // Shoot many lazers
+        {
+            var emmisionModule = lazer.GetComponent<ParticleSystem>().emission;
+            emmisionModule.enabled = isShooting;
+        }
     }
 }
