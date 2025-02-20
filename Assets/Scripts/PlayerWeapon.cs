@@ -9,15 +9,16 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] Transform targetPoint;
     [SerializeField] float targetDistance = 10f;
 
-    void Start()
+    private void Start()
     {
         //Cursor.visible = false;
     }
-    void Update()
+    private void Update()
     {
         ProcessShooting();
         MoveCrossHair();
         MoveTargetPoint();
+        AimLazers();
     }
 
     public void OnShoot(InputValue value)
@@ -41,5 +42,15 @@ public class PlayerWeapon : MonoBehaviour
     {
         Vector3 targetPointPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, targetDistance); ;
         targetPoint.position = Camera.main.ScreenToWorldPoint(targetPointPosition);
+    }
+
+    void AimLazers()
+    {
+        foreach (GameObject lazer in lazers)
+        {
+            Vector3 shootDirection = targetPoint.position - this.transform.position;
+            Quaternion rotationToTarget = Quaternion.LookRotation(shootDirection);
+            lazer.transform.rotation = rotationToTarget;
+        }
     }
 }
