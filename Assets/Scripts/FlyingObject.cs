@@ -18,11 +18,4 @@ public class FlyingObject : MonoBehaviour
             Vector3.MoveTowards(transform.position, playerPosition, speedFly * Time.deltaTime);
 
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log($"Hit{other.gameObject.name}");
-        //Debug.Log("Hit " + other.name);
-    }
-
 }
