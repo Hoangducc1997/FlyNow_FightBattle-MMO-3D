@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
@@ -12,8 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float controlYawFactor = 1.0f; // Rotate x
     [SerializeField] float rotationSpeed = 1.0f;
     Vector2 movement; // x & y of Player
-
-  
+      
     void Update()
     {
         ProcessTranslation();
