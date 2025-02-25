@@ -6,14 +6,14 @@ public class FlyingObject : MonoBehaviour
     [SerializeField] Transform player;
     [SerializeField] int damageAtkPlayer = 1;
 
-    private PlayerInfo playerInfo;
-
     Vector3 playerPosition;
 
     void Start()
     {
-        playerInfo = GetComponent<PlayerInfo>();
-        playerPosition = player.transform.position;
+        if (player != null)
+        {
+            playerPosition = player.transform.position;
+        }
     }
 
     void Update()
@@ -32,7 +32,11 @@ public class FlyingObject : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Chạm vào Player");
-            playerInfo.TakeDamage(damageAtkPlayer);
+            PlayerInfo playerInfo = collision.gameObject.GetComponent<PlayerInfo>();
+            if (playerInfo != null)
+            {
+                playerInfo.TakeDamage(damageAtkPlayer);
+            }           
             Destroy(gameObject, 0.5f);
         }
     }
