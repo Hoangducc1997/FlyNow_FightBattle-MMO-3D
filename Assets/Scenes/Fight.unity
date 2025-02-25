@@ -128,12 +128,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9356723}
+  - component: {fileID: 9356728}
+  - component: {fileID: 9356727}
+  - component: {fileID: 9356724}
   - component: {fileID: 9356725}
   - component: {fileID: 9356729}
   - component: {fileID: 9356726}
-  - component: {fileID: 9356724}
-  - component: {fileID: 9356727}
-  - component: {fileID: 9356728}
+  - component: {fileID: 9356730}
   m_Layer: 0
   m_Name: Player Ship
   m_TagString: Player
@@ -286,6 +287,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c73a1eafaa93b2549bc761619ad56ff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9356730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9356722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1ae0b55be5dbd4495413c5289856cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 1359132069}
+  maxHealth: 100
 --- !u!1001 &24624990
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2720,7 +2735,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 498.3, y: -38.8}
+  m_AnchoredPosition: {x: 498.30005, y: -38.80005}
   m_SizeDelta: {x: 588, y: 88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1359132069
