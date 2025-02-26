@@ -22,7 +22,7 @@ public class PlayerInfo : MonoBehaviour
     }
     private void Update()
     {
-        IncreasePassive();
+     
     }
 
     //Health
@@ -60,13 +60,4 @@ public class PlayerInfo : MonoBehaviour
             passiveBar.value = (float)currentPassive / maxPassive;
         }
     }
-
-    public void IncreasePassive()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            GainPassive(10);
-        }
-    }
-
 }

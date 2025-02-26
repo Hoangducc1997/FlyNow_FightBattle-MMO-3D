@@ -6,7 +6,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject destroyedVFX;
     [SerializeField] int hitPoints = 2;
     [SerializeField] int score = 0;
-
+    [SerializeField] GameObject[] itemForPlayer;
+ 
     Score scoreIncrease;
 
     private void Start()
@@ -20,6 +21,9 @@ public class Enemy : MonoBehaviour
         {
             Instantiate(destroyedVFX, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
+
+            // Spawn Item
+            
             scoreIncrease.IncreaseScore(score);
         }
       
