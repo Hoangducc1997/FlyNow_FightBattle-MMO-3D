@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    [SerializeField] ItemData itemData;
+    public ItemData itemData;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.collider.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             itemData.UseItem();
             Destroy(gameObject);
-        }
+        }   
     }
 }

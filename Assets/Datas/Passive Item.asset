@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1bc98e224f4aa8a4e9cdb86c3c7482e2, type: 3}
-  m_Name: Health Item
+  m_Name: Passive Item
   m_EditorClassIdentifier: 
-  itemName: Health
-  itemType: 0
-  itemPrefab: {fileID: 7767410786187258611, guid: f2d7bd510456c71419546819c593ccbc, type: 3}
+  itemName: Passive
+  itemType: 1
+  itemPrefab: {fileID: 8982113442945856639, guid: ab9ed550b498d2245927c5243204dbaa, type: 3}
