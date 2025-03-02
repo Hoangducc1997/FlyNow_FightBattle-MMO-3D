@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Hit
   - Ground
+  - Lazer
   layers:
   - Default
   - TransparentFX

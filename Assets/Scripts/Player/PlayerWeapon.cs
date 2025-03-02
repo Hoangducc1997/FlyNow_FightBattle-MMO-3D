@@ -15,10 +15,10 @@ public class PlayerWeapon : MonoBehaviour
     }
     private void Update()
     {
-        ProcessShooting();
-        MoveCrossHair();
-        MoveTargetPoint();
-        AimLazers();
+        this.ProcessShooting();
+        this.MoveCrossHair();
+        this.MoveTargetPoint();
+        this.AimLazers();
     }
 
     public void OnShoot(InputValue value)
