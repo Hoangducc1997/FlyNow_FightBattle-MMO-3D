@@ -19,15 +19,20 @@ public class Enemy : MonoBehaviour
     }
     private void OnParticleCollision(GameObject other)
     {
-        hitPoints --;
+        // Kiểm tra nếu va chạm với đạn mới trừ máu
+        if (!other.CompareTag("Lazer")) return;
+
+        hitPoints--;
         if (hitPoints <= 0)
         {
             Instantiate(destroyedVFX, transform.position, Quaternion.identity);
             SpawnItem();
-            Destroy(this.gameObject);
             scoreIncrease.IncreaseScore(score);
+            Destroy(gameObject); // Không hủy cha, chỉ hủy Enemy
         }
     }
+
+
     private void SpawnItem()
     {
         if (possibleItemDrops.Length > 0 && Random.value < dropRate)
