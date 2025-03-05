@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
             Instantiate(destroyedVFX, transform.position, Quaternion.identity);
             SpawnItem();
             scoreIncrease.IncreaseScore(score);
-            Destroy(gameObject); // Không hủy cha, chỉ hủy Enemy
+            Destroy(transform.parent.gameObject); // Không hủy cha, chỉ hủy Enemy
         }
     }
 

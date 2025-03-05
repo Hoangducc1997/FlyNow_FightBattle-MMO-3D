@@ -11,6 +11,7 @@ public class PlayerInfo : MonoBehaviour
     [Header("- Passive Player -")]
     [SerializeField] private Slider passiveBar;
     [SerializeField] private int maxPassive = 100;
+    
     private int currentPassive = 0;
 
     private void Start()
@@ -53,6 +54,15 @@ public class PlayerInfo : MonoBehaviour
         currentPassive = Mathf.Clamp(currentPassive, 0, maxPassive);
         UpdatePassiveBar();
     }
+    public void ResetPassive()
+    {
+        currentPassive = 0;
+    }
+    public int GetCurrentPassive()
+    {
+        return currentPassive;
+    }
+
     private void UpdatePassiveBar()
     {
         if (passiveBar != null)

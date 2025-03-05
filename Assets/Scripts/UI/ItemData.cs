@@ -11,19 +11,40 @@ public class ItemData : ScriptableObject
     public string itemName;
     public ItemType itemType;
     public GameObject itemPrefab;
+    public int healAmount;
+    public int passiveAmount;
 
-    public void UseItem()
+    public void UseItem(GameObject target)
     {
         switch (itemType)
         {
             case ItemType.Health:
                 Debug.Log("Tăng máu!");
+                PlayerInfo playerHealth = target.GetComponent<PlayerInfo>();
+                if (playerHealth != null)
+                {
+                    playerHealth.Heal(healAmount);
+                    Debug.Log($"🔋 Hồi {healAmount} máu cho Player!");
+                }
                 break;
+
             case ItemType.Passive:
-                Debug.Log("Nhận Passive Item!");
+                Debug.Log("Tăng nội năng!");
+                PlayerInfo playerPassive = target.GetComponent<PlayerInfo>();
+                if (playerPassive != null)
+                {
+                    playerPassive.GainPassive(passiveAmount);
+                    Debug.Log($"🔋 Hồi {healAmount} máu cho Player!");
+                }
                 break;
+
             case ItemType.UpgradeLazer:
                 Debug.Log("Nâng cấp Lazer!");
+                PlayerWeapon playerWeapon = target.GetComponent<PlayerWeapon>();
+                if (playerWeapon != null)
+                {
+                    playerWeapon.UpgradeLevelLazer(); // Gọi nâng cấp laser
+                }
                 break;
         }
     }
