@@ -27,7 +27,7 @@ public class BulletEnemy : MonoBehaviour
 
             Destroy(gameObject); // Hủy viên đạn sau khi trúng Player
         }
-        else if (other.CompareTag("Wall") || other.CompareTag("Ground"))
+        else if (other.CompareTag("Ground"))
         {
             Destroy(gameObject); // Hủy đạn khi trúng tường hoặc mặt đất
         }

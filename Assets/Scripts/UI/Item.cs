@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Item : MonoBehaviour
 {
@@ -8,8 +8,8 @@ public class Item : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            itemData.UseItem();
+            itemData.UseItem(other.gameObject); // Truyền đối tượng Player vào
             Destroy(gameObject);
-        }   
+        }
     }
 }
