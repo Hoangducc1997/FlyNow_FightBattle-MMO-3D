@@ -12,6 +12,7 @@ public class PlayerWeapon : MonoBehaviour
 {
     bool isShooting = false;
     bool isSpecialSkill = false;
+    bool canUseSpecialSkill = false; // Biến kiểm soát
 
     [SerializeField] List<LazerLevel> levelLazers = new List<LazerLevel>(); // Chứa nhiều cấp độ, mỗi cấp có nhiều Lazer
     [SerializeField] RectTransform crossHair;
@@ -20,7 +21,7 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] GameObject specialSkill;
     [SerializeField] PlayerInfo playerInfo; // Tham chiếu đến PlayerInfo
 
-    private int currentLevel = 0; // Cấp độ hiện tại
+    private int currentLevel = 0; // Cấp độ hiện tại    
 
     private void Start()
     {
@@ -39,6 +40,12 @@ public class PlayerWeapon : MonoBehaviour
         MoveCrossHair();
         MoveTargetPoint();
         AimLazers();
+
+        // 🛠 Xoay specialSkill theo hướng chuột liên tục
+        if (specialSkill.activeSelf)
+        {
+            AimSpecialSkill();
+        }
     }
 
     public void OnShoot(InputValue value)
@@ -58,16 +65,46 @@ public class PlayerWeapon : MonoBehaviour
             emissionModule.enabled = isShooting;
         }
     }
-
     void ProcessSpecialSkill()
     {
         if (isSpecialSkill && playerInfo.GetCurrentPassive() == 100)
         {
+            playerInfo.ResetPassive();
+            canUseSpecialSkill = true;
+            Debug.Log("🔄 Passive đạt 100! Bạn có thể nhấn chuột trái để kích hoạt Special Skill.");
+        }
+
+        if (isShooting && canUseSpecialSkill)
+        {
             specialSkill.SetActive(true);
-            playerInfo.ResetPassive(); // Reset thanh Passive về 0
-            Debug.Log("🔥 Kích hoạt kỹ năng đặc biệt!");
+            canUseSpecialSkill = false;
+            Debug.Log("🔥 Kỹ năng đặc biệt đã kích hoạt! Passive reset về 0.");
+
+            // ❌ Tắt laser khi dùng SpecialSkill
+            SetActiveLazer(currentLevel, false);
+
+            // 🔄 Tắt specialSkill sau 5 giây và bật lại laser
+            Invoke(nameof(DisableSpecialSkill), 5f);
         }
     }
+
+
+    void AimSpecialSkill()
+    {
+        Vector3 shootDirection = targetPoint.position - specialSkill.transform.position;
+        Quaternion rotationToTarget = Quaternion.LookRotation(shootDirection);
+        specialSkill.transform.rotation = rotationToTarget;
+    }
+
+
+    void DisableSpecialSkill()
+    {
+        specialSkill.SetActive(false);
+
+        // ✅ Bật lại laser sau khi SpecialSkill tắt
+        SetActiveLazer(currentLevel, true);
+    }
+
 
     void MoveCrossHair()
     {
@@ -117,4 +154,6 @@ public class PlayerWeapon : MonoBehaviour
             }
         }
     }
+
+
 }

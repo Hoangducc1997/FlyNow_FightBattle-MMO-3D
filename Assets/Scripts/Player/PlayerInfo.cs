@@ -57,6 +57,7 @@ public class PlayerInfo : MonoBehaviour
     public void ResetPassive()
     {
         currentPassive = 0;
+        UpdatePassiveBar();
     }
     public int GetCurrentPassive()
     {
