@@ -77,6 +77,13 @@ public class PlayerWeapon : MonoBehaviour
         if (isShooting && canUseSpecialSkill)
         {
             specialSkill.SetActive(true);
+            var specialParticle = specialSkill.GetComponent<ParticleSystem>();
+            if (specialParticle != null)
+            {
+                var emission = specialParticle.emission;
+                emission.enabled = true;
+            }
+
             canUseSpecialSkill = false;
             Debug.Log("🔥 Kỹ năng đặc biệt đã kích hoạt! Passive reset về 0.");
 
