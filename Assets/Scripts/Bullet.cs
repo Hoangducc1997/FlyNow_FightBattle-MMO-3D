@@ -31,5 +31,5 @@ public class Bullet : MonoBehaviour
     public void InitBullet(Action action)
     {
         OnTrigger = action;
-    }
+    } 
 }
