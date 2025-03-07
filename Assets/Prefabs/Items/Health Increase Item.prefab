@@ -52,6 +52,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Health Increase Item
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 570c31b5a9e628c4b9ea514868991046, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 570c31b5a9e628c4b9ea514868991046, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -87,8 +95,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0068448, y: 2.2320957, z: 3.045323}
-  m_Center: {x: 0.012202859, y: 1.2199397, z: 0.023026943}
+  m_Size: {x: 8.192403, y: 6.958692, z: 7.25685}
+  m_Center: {x: 0.92022085, y: 1.4669363, z: 0.26721883}
 --- !u!114 &5722931929076607818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,3 +110,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 4400c5a1607b82549b4fd2a36b3a2674, type: 2}
+  moveSpeed: 26

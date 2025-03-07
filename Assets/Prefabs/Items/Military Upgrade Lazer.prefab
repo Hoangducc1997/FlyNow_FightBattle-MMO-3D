@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2776188348268349320}
   - component: {fileID: 5386389240361689413}
   - component: {fileID: -6274309338434352965}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Military Upgrade Lazer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,8 +53,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.60983765, y: 0.24120852, z: 0.71162605}
-  m_Center: {x: 0.016630393, y: 0.1466927, z: 0.0048305197}
+  m_Size: {x: 1.4080652, y: 0.9621352, z: 1.5940007}
+  m_Center: {x: -0.0694062, y: 0.15639994, z: 0.1342334}
 --- !u!114 &-6274309338434352965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 7a6d2765965adc743909f25523285a3b, type: 2}
+  moveSpeed: 22
 --- !u!1001 &8495003385941999615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79,6 +80,10 @@ PrefabInstance:
     - target: {fileID: 3955793001504693674, guid: e705b25747754f64f8fc8ac3c2f9451e, type: 3}
       propertyPath: m_Name
       value: P_rsg_military_explosive_grenade_box_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955793001504693674, guid: e705b25747754f64f8fc8ac3c2f9451e, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4444521124542908176, guid: e705b25747754f64f8fc8ac3c2f9451e, type: 3}
       propertyPath: m_LocalScale.x

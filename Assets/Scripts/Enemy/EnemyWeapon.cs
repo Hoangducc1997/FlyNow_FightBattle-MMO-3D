@@ -5,8 +5,8 @@ public class EnemyWeapon : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;  // Prefab viên đạn
     [SerializeField] private Transform firePoint;      // Vị trí bắn
-    [SerializeField] private float bulletSpeed = 10f;  // Tốc độ đạn
-    [SerializeField] private float fireRate = 1.5f;    // Thời gian hồi đạn (giây)
+    [SerializeField] private float fireRate = 1.5f;    // Thời gian hồi bắn
+    [SerializeField] private float bulletSpeed = 5f;   // Tốc độ đạn
 
     private Transform player;
     private bool isShooting = false;
@@ -25,9 +25,8 @@ public class EnemyWeapon : MonoBehaviour
         while (isShooting)
         {
             Shoot();
-            yield return new WaitForSeconds(fireRate); // Đợi thời gian hồi đạn
+            yield return new WaitForSeconds(fireRate); // Kiểm soát tốc độ bắn
         }
-
         shootingCoroutine = null; // Reset coroutine khi dừng bắn
     }
 
@@ -40,18 +39,13 @@ public class EnemyWeapon : MonoBehaviour
         }
 
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        Debug.Log($"🚀 Bắn bullet từ {firePoint.position}");
+        BulletEnemy bulletScript = bullet.GetComponent<BulletEnemy>();
 
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
-
-        if (rb == null)
+        if (bulletScript != null && player != null)
         {
-            Debug.LogError("❌ Không tìm thấy Rigidbody trong bulletPrefab! Hãy kiểm tra Prefab viên đạn.");
-            return;
+            Vector3 targetPosition = player.position; // Lấy vị trí player tại thời điểm bắn
+            bulletScript.SetTarget(targetPosition, bulletSpeed); // Truyền vị trí cố định lúc bắn
         }
-
-        Vector3 direction = (player.position - firePoint.position).normalized;
-        rb.linearVelocity = direction * bulletSpeed; // Dùng linearVelocity thay cho velocity
     }
 
     private void OnTriggerEnter(Collider other)
