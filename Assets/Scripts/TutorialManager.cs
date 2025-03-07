@@ -3,6 +3,7 @@ using UnityEngine.Playables;
 using System.Collections;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI guideMoveTarget;
 
     [SerializeField] private GameObject ufo;
+    
+    [SerializeField] private Button NextTutorial;
 
     private bool isCheckMoveTarget;
 
@@ -64,7 +67,8 @@ public class TutorialManager : MonoBehaviour
 
         playerWeapon.pfx.Play();
 
-
+        NextTutorial.gameObject.SetActive(true);
+            
         yield return new WaitForSeconds(2);
 
         tutorpart6.SetActive(false);
@@ -122,6 +126,11 @@ public class TutorialManager : MonoBehaviour
 
         yield return new WaitForSeconds(2);
 
+        SceneManager.LoadScene("Fight");
+    }
+
+    public void FinishTutorial()
+    {
         SceneManager.LoadScene("Fight");
     }
 }
