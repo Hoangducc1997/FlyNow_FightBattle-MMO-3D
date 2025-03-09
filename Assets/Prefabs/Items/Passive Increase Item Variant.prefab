@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Passive Increase Item Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 567147022187255751, guid: 8809bf6169090444b94e702fbc61c496, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1164603166913248891, guid: 8809bf6169090444b94e702fbc61c496, type: 3}
       propertyPath: m_LocalScale.x
       value: 100
@@ -64,6 +68,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9140599631560984001, guid: 8809bf6169090444b94e702fbc61c496, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -99,8 +107,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.015378685, y: 0.07437514, z: 0.017864982}
-  m_Center: {x: -0.00009661943, y: 0.0067065023, z: -0.000059683916}
+  m_Size: {x: 0.07170776, y: 0.11774313, z: 0.06128451}
+  m_Center: {x: 0.010448103, y: 0.0018961525, z: 0.0022031807}
 --- !u!114 &-7145805291929420213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,3 +122,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: e7ccb54432a28ee4890e42f786d2f0ab, type: 2}
+  moveSpeed: 28

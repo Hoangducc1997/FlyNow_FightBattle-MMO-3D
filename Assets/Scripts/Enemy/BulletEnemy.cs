@@ -2,12 +2,25 @@
 
 public class BulletEnemy : MonoBehaviour
 {
-    [SerializeField] int damage = 10; // Sát thương của đạn
-    [SerializeField] float destroyTime = 3f; // Tự hủy sau 3 giây
+    [SerializeField] private int damage = 10; // Sát thương của đạn
+    [SerializeField] private float destroyTime = 5f; // Tự hủy sau 5 giây
+    private Vector3 direction; // Lưu hướng bắn
+    private float bulletSpeed; // Tốc độ đạn
+
+    public void SetTarget(Vector3 targetPosition, float speed)
+    {
+        direction = (targetPosition - transform.position).normalized; // Tính hướng ngay khi bắn
+        bulletSpeed = speed; // Lưu tốc độ
+    }
 
     void Start()
     {
-        Destroy(gameObject, destroyTime); // Hủy viên đạn sau một khoảng thời gian
+        Destroy(gameObject, destroyTime); // Hủy viên đạn sau thời gian cố định
+    }
+
+    void Update()
+    {
+        transform.position += direction * bulletSpeed * Time.deltaTime; // Di chuyển theo hướng đã tính
     }
 
     void OnTriggerEnter(Collider other)
@@ -18,18 +31,12 @@ public class BulletEnemy : MonoBehaviour
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damage);
-                Debug.Log($"💥 Đạn trúng Player! Gây {damage} sát thương.");
             }
-            else
-            {
-                Debug.LogWarning("⚠️ Không tìm thấy PlayerHealth trên Player!");
-            }
-
-            Destroy(gameObject); // Hủy viên đạn sau khi trúng Player
+            Destroy(gameObject); // Hủy viên đạn khi trúng Player
         }
         else if (other.CompareTag("Ground"))
         {
-            Destroy(gameObject); // Hủy đạn khi trúng tường hoặc mặt đất
+            Destroy(gameObject); // Hủy viên đạn khi trúng tường/mặt đất
         }
     }
 }

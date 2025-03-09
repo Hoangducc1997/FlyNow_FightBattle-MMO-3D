@@ -23,6 +23,8 @@ public class PlayerWeapon : MonoBehaviour
 
     private int currentLevel = 0; // Cấp độ hiện tại    
 
+
+    public bool IsPlayingTutorial { get; set; }
     private void Start()
     {
         // Tắt tất cả Lazer, chỉ bật cấp 0
@@ -35,6 +37,8 @@ public class PlayerWeapon : MonoBehaviour
 
     private void Update()
     {
+        if (IsPlayingTutorial)
+            return;
         ProcessShooting();
         ProcessSpecialSkill();
         MoveCrossHair();
