@@ -110,4 +110,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 4400c5a1607b82549b4fd2a36b3a2674, type: 2}
-  moveSpeed: 26
+  moveSpeed: 36
