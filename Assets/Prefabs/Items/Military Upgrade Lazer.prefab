@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 7a6d2765965adc743909f25523285a3b, type: 2}
-  moveSpeed: 22
+  moveSpeed: 38
 --- !u!1001 &8495003385941999615
 PrefabInstance:
   m_ObjectHideFlags: 0
