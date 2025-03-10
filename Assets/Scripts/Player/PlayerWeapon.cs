@@ -23,6 +23,8 @@ public class PlayerWeapon : MonoBehaviour
 
     private int currentLevel = 0; // Cấp độ hiện tại    
 
+    [SerializeField] private Animator animator; 
+    private bool isSpeacial = false;    
 
     public bool IsPlayingTutorial { get; set; }
     private void Start()
@@ -59,6 +61,10 @@ public class PlayerWeapon : MonoBehaviour
     public void OnSpecialSkill(InputValue value)
     {
         isSpecialSkill = value.isPressed;
+        if (animator != null)
+        {
+            animator.SetBool("isSpecial", true);
+        }
     }
 
     void ProcessShooting()
@@ -80,7 +86,9 @@ public class PlayerWeapon : MonoBehaviour
 
         if (isShooting && canUseSpecialSkill)
         {
+           
             specialSkill.SetActive(true);
+           
             var specialParticle = specialSkill.GetComponent<ParticleSystem>();
             if (specialParticle != null)
             {
@@ -111,7 +119,10 @@ public class PlayerWeapon : MonoBehaviour
     void DisableSpecialSkill()
     {
         specialSkill.SetActive(false);
-
+        if (animator != null)
+        {
+            animator.SetBool("isSpecial", false);
+        }
         // ✅ Bật lại laser sau khi SpecialSkill tắt
         SetActiveLazer(currentLevel, true);
     }
