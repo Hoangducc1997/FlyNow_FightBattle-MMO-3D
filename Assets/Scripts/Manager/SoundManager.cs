@@ -10,6 +10,11 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
+        this.InitManager();
+        this.DefaultSoundData();
+    }
+    private void InitManager()
+    {
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -17,6 +22,11 @@ public class SoundManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void DefaultSoundData()
+    {
+        SoundData = new SoundData();
     }
 
     public float GetCurrentMusicVolume()
@@ -32,7 +42,7 @@ public class SoundManager : MonoBehaviour
     public void SetVfxVolume(float value)
     {
         SoundData.SFXVolume = value;
-        SoundData.IsSFXMuted = SoundData.SFXVolume == 0; // Cập nhật trạng thái mute
+        SoundData.IsSFXMuted = SoundData.SFXVolume == 0;
     }
 
     public void SetMusicVolume(float value)
@@ -50,7 +60,7 @@ public class SoundManager : MonoBehaviour
     public void ToggleMusicMute()
     {
         SoundData.IsMusicMuted = !SoundData.IsMusicMuted;
-        SoundData.MusicVolume = SoundData.IsMusicMuted ? 0 : 0.5f; // Default volume khi bật lại
+        SoundData.MusicVolume = SoundData.IsMusicMuted ? 0 : 0.5f;
     }
 
     public void ToggleSFXMute()

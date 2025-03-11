@@ -24,6 +24,7 @@ public class StartGamePopup : UIPopup
 
         _SettingBtn.onClick.AddListener(() =>
         {
+            this.OnHide();
             UIManager.Instance.ShowPopup(PopupName.SettingPopup);
         });
 
