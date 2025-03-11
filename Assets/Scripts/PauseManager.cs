@@ -6,6 +6,7 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private Button exitButton;
     [SerializeField] private Button pauseButton;
     [SerializeField] private Button resumeButton;
+    [SerializeField] private Button settingButton;
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject settingPanel;
 
@@ -15,6 +16,7 @@ public class PauseManager : MonoBehaviour
         exitButton.onClick.AddListener(ExitGame);
         pauseButton.onClick.AddListener(PauseGame);
         resumeButton.onClick.AddListener(ResumeGame);
+        settingButton.onClick.AddListener(SettingGame);
     }
 
     public void ExitGame()
@@ -32,11 +34,10 @@ public class PauseManager : MonoBehaviour
 
     public void SettingGame()
     {
+        Debug.Log("Đã gọi SettingGame");
         settingPanel.SetActive(true);
         pausePanel.SetActive(false);
     }
-
-
 
     public void ResumeGame()
     {
