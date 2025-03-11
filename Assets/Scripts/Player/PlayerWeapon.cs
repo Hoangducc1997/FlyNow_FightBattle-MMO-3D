@@ -12,7 +12,7 @@ public class PlayerWeapon : MonoBehaviour
 {
     bool isShooting = false;
     bool isSpecialSkill = false;
-    bool canUseSpecialSkill = false; // Biến kiểm soát
+
 
     [SerializeField] List<LazerLevel> levelLazers = new List<LazerLevel>(); // Chứa nhiều cấp độ, mỗi cấp có nhiều Lazer
     [SerializeField] RectTransform crossHair;
@@ -24,18 +24,21 @@ public class PlayerWeapon : MonoBehaviour
     private int currentLevel = 0; // Cấp độ hiện tại    
 
     [SerializeField] private Animator animator; 
-    private bool isSpeacial = false;    
+    private bool isSpecial = false;    
 
     public bool IsPlayingTutorial { get; set; }
     private void Start()
     {
-        // Tắt tất cả Lazer, chỉ bật cấp 0
+        isSpecialSkill = false; // Đảm bảo mặc định là false
+        Debug.Log("Giá trị khởi tạo của isSpecialSkill: " + isSpecialSkill);
+
         for (int i = 0; i < levelLazers.Count; i++)
         {
             SetActiveLazer(i, i == 0);
         }
         specialSkill.SetActive(false);
     }
+
 
     private void Update()
     {
@@ -60,12 +63,14 @@ public class PlayerWeapon : MonoBehaviour
     }
     public void OnSpecialSkill(InputValue value)
     {
+        // Nếu Passive chưa đủ 100 thì bỏ qua luôn, không cho phép nhấn F
+        if (playerInfo.GetCurrentPassive() < 100)
+            return;
+
         isSpecialSkill = value.isPressed;
-        if (animator != null)
-        {
-            animator.SetBool("isSpecial", true);
-        }
     }
+
+
 
     void ProcessShooting()
     {
@@ -77,18 +82,30 @@ public class PlayerWeapon : MonoBehaviour
     }
     void ProcessSpecialSkill()
     {
-        if (isSpecialSkill && playerInfo.GetCurrentPassive() == 100)
+        if (playerInfo.GetCurrentPassive() < 100)
+            return;
+
+        // 🟢 Khi nhấn F, kích hoạt animation nhưng **chưa bắn**
+        if (isSpecialSkill)
         {
-            playerInfo.ResetPassive();
-            canUseSpecialSkill = true;
-            Debug.Log("🔄 Passive đạt 100! Bạn có thể nhấn chuột trái để kích hoạt Special Skill.");
+            isSpecialSkill = false; // Reset tránh spam F
+            isSpecial = true; // Đánh dấu đang trong chế độ đặc biệt
+
+            if (animator != null)
+            {
+                animator.SetBool("isSpecial", true);
+            }
+
+            Debug.Log("🔄 Passive đạt 100! Nhấn chuột trái để bắn Special Skill.");
         }
 
-        if (isShooting && canUseSpecialSkill)
+        // 🔥 Khi đã kích hoạt bằng F và nhấn chuột trái thì mới bắn
+        if (isSpecial && isShooting)
         {
-           
-            specialSkill.SetActive(true);
-           
+            isSpecial = false; // Ngăn không bắn nhiều lần khi giữ chuột
+            specialSkill.SetActive(true); // Hiển thị hiệu ứng đặc biệt
+            playerInfo.ResetPassive(); // Reset Passive về 0
+
             var specialParticle = specialSkill.GetComponent<ParticleSystem>();
             if (specialParticle != null)
             {
@@ -96,13 +113,10 @@ public class PlayerWeapon : MonoBehaviour
                 emission.enabled = true;
             }
 
-            canUseSpecialSkill = false;
-            Debug.Log("🔥 Kỹ năng đặc biệt đã kích hoạt! Passive reset về 0.");
+            Debug.Log("🔥 Special Skill đã bắn!");
 
-            // ❌ Tắt laser khi dùng SpecialSkill
-            SetActiveLazer(currentLevel, false);
+            SetActiveLazer(currentLevel, false); // Tắt laser thường
 
-            // 🔄 Tắt specialSkill sau 5 giây và bật lại laser
             Invoke(nameof(DisableSpecialSkill), 5f);
         }
     }
@@ -126,7 +140,6 @@ public class PlayerWeapon : MonoBehaviour
         // ✅ Bật lại laser sau khi SpecialSkill tắt
         SetActiveLazer(currentLevel, true);
     }
-
 
     void MoveCrossHair()
     {
@@ -176,6 +189,4 @@ public class PlayerWeapon : MonoBehaviour
             }
         }
     }
-
-
 }
