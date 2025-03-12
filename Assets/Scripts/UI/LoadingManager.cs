@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class LoadingManager : MonoBehaviour
 {
-    public static string NEXT_SCENE = "Tutorial";
+    public static string NEXT_SCENE = "StartGame";
     [SerializeField] private GameObject processBar;
     [SerializeField] private Text textPercent;
     [SerializeField] float fixedLoadingTime = 3f;
