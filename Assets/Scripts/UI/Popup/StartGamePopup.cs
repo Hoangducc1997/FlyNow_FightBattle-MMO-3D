@@ -30,6 +30,7 @@ public class StartGamePopup : UIPopup
 
         _TutorialBtn.onClick.AddListener(() =>
         {
+            this.OnHide();
             GameSceneManager.Instance.LoadScene(SceneName.Tutorial);
         });
         _ExitGameBtn.onClick.AddListener(() =>
