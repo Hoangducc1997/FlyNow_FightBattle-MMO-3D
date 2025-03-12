@@ -3,20 +3,41 @@ using UnityEngine.UI;
 
 public class SettingManager : MonoBehaviour
 {
-    [SerializeField] private Button backButton;
+    [SerializeField] private Button settingButton;
+    private GameObject settingPanel;
     [SerializeField] private GameObject pausePanel;
-    [SerializeField] private GameObject settingPanel;
 
     void Start()
     {
-        backButton.onClick.AddListener(BackPause);
+        settingButton.onClick.AddListener(SettingGame);
+
+        // Tìm tất cả GameObject có Component và lọc theo tag "setting"
+        foreach (GameObject obj in FindObjectsOfType<GameObject>(true))
+        {
+            if (obj.CompareTag("Setting"))
+            {
+                settingPanel = obj;
+                break;
+            }
+        }
+
+        if (settingPanel != null)
+        {
+            settingPanel.SetActive(false); // Đảm bảo ẩn lúc đầu
+        }
+        else
+        {
+            Debug.LogWarning("Không tìm thấy đối tượng có tag 'setting'");
+        }
     }
 
-    public void BackPause()
+    public void SettingGame()
     {
-        Debug.Log("Đã gọi SettingGame");
-        pausePanel.SetActive(true);
-        settingPanel.SetActive(false);
+        if (settingPanel != null)
+        {
+            /*settingPanel.SetActive(true);*/
+            UIManager.Instance.ShowPopup(PopupName.SettingPopup);
+            pausePanel.SetActive(false);
+        }
     }
-
 }

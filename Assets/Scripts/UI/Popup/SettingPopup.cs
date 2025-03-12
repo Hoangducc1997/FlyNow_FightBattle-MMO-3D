@@ -27,7 +27,7 @@ public class SettingPopup : UIPopup
     public override void OnHide()
     {
         base.OnHide();
-        UIManager.Instance.ShowPopup(PopupName.StartGamePopup);
+         if(GameSceneManager.Instance.GetCurrentScene() == SceneName.StartGame.ToString() )UIManager.Instance.ShowPopup(PopupName.StartGamePopup);
     }
     void RegisterEvents()
     {
