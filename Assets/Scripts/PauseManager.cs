@@ -8,11 +8,9 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button settingButton;
     [SerializeField] private GameObject pausePanel;
-    [SerializeField] private GameObject settingPanel;
 
     void Start()
     {
-        settingPanel.SetActive(false);
         exitButton.onClick.AddListener(ExitGame);
         pauseButton.onClick.AddListener(PauseGame);
         resumeButton.onClick.AddListener(ResumeGame);
@@ -35,7 +33,6 @@ public class PauseManager : MonoBehaviour
     public void SettingGame()
     {
         Debug.Log("Đã gọi SettingGame");
-        settingPanel.SetActive(true);
         pausePanel.SetActive(false);
     }
 
