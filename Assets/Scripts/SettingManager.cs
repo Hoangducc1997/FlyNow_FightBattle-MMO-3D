@@ -37,6 +37,7 @@ public class SettingManager : MonoBehaviour
         {
             /*settingPanel.SetActive(true);*/
             UIManager.Instance.ShowPopup(PopupName.SettingPopup);
+            Time.timeScale = 0f; // Ngừng thời gian trong game
             pausePanel.SetActive(false);
         }
     }
