@@ -117,6 +117,11 @@ public class AudioManager : MonoBehaviour
         }
         return null;
     }
+    public bool IsPlayingVFX(string vfxName)
+    {
+        return _vfxAudio.isPlaying; // Kiểm tra nếu có VFX đang chạy
+    }
+
 }
 
 [System.Serializable]

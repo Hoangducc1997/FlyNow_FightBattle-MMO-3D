@@ -70,16 +70,21 @@ public class PlayerWeapon : MonoBehaviour
         isSpecialSkill = value.isPressed;
     }
 
-
-
     void ProcessShooting()
     {
-        foreach (var lazer in levelLazers[currentLevel].lazerObjects) // Chỉ bắn Lazer của cấp hiện tại
+        foreach (var lazer in levelLazers[currentLevel].lazerObjects)
         {
             var emissionModule = lazer.GetComponent<ParticleSystem>().emission;
             emissionModule.enabled = isShooting;
         }
+
+        // Chỉ phát âm thanh khi đang bắn và chưa có âm thanh "Lazer" chạy
+        if (isShooting && !AudioManager.Instance.IsPlayingVFX("Lazer"))
+        {
+            AudioManager.Instance.PlayVFX("Lazer");
+        }
     }
+
     void ProcessSpecialSkill()
     {
         if (playerInfo.GetCurrentPassive() < 100)
@@ -106,6 +111,7 @@ public class PlayerWeapon : MonoBehaviour
             specialSkill.SetActive(true); // Hiển thị hiệu ứng đặc biệt
             playerInfo.ResetPassive(); // Reset Passive về 0
 
+            AudioManager.Instance.PlayVFX("Special Lazer"); // Phát âm thanh SpecialSkill    
             var specialParticle = specialSkill.GetComponent<ParticleSystem>();
             if (specialParticle != null)
             {

@@ -11,6 +11,7 @@ public class PauseManager : MonoBehaviour
 
     void Start()
     {
+        pausePanel.SetActive(false);
         exitButton.onClick.AddListener(ExitGame);
         pauseButton.onClick.AddListener(PauseGame);
         resumeButton.onClick.AddListener(ResumeGame);
