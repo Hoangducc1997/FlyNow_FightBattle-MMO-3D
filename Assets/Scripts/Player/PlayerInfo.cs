@@ -33,6 +33,12 @@ public class PlayerInfo : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthBar();
     }
+
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
     public void Heal(int amount)
     {
         currentHealth += amount;
