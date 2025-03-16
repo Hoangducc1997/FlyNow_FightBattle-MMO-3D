@@ -450,6 +450,7 @@ MonoBehaviour:
   maxHealth: 100
   passiveBar: {fileID: 1893704319}
   maxPassive: 100
+  explosionEffect: {fileID: 134082, guid: 2b9e3bdfae9517545b64fcf374d8c9ce, type: 3}
 --- !u!1 &16494924
 GameObject:
   m_ObjectHideFlags: 0
@@ -2649,7 +2650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a639a954d5fbb414dbdc618066e1237b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverPanel: {fileID: 355921659}
+  gameOverPanel: {fileID: 1100459337}
   scoreText: {fileID: 221995644}
   restartGame: {fileID: 592698137}
   quitGame: {fileID: 1412126194}
@@ -4289,7 +4290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4674194526114558462, guid: af9ab7e807bf5b6498bb29fa4d784bfa, type: 3}
       propertyPath: damageAtkPlayer
-      value: 5
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
