@@ -16,4 +16,4 @@ MonoBehaviour:
   itemType: 1
   itemPrefab: {fileID: 8982113442945856639, guid: ab9ed550b498d2245927c5243204dbaa, type: 3}
   healAmount: 0
-  passiveAmount: 100
+  passiveAmount: 25
