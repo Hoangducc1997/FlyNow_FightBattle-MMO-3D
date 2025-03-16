@@ -52,7 +52,7 @@ public class PlayerInfo : MonoBehaviour
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
         }
 
-        Invoke("DestroyPlayer", 0.5f);
+        Invoke("DestroyPlayer", 2f);
 
         GameOverManager gameOverManager = FindObjectOfType<GameOverManager>();
         if (gameOverManager != null)
