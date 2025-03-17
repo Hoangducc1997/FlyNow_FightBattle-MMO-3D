@@ -6,6 +6,7 @@ using TMPro;
 public class GameOverManager : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject victoryPanel;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private Button restartGame;
     [SerializeField] private Button quitGame;
@@ -14,7 +15,7 @@ public class GameOverManager : MonoBehaviour
     {
         // Ẩn bảng Game Over khi bắt đầu game
         gameOverPanel.SetActive(false);
-
+        victoryPanel.gameObject.SetActive(false);
         // Gán sự kiện cho nút
         restartGame.onClick.AddListener(RestartGame);
         quitGame.onClick.AddListener(QuitGame);
@@ -31,6 +32,11 @@ public class GameOverManager : MonoBehaviour
         Invoke("GameOver", delay);
     }
 
+    public void Victory()
+    {
+        victoryPanel.SetActive(true);
+        scoreText.text = "Score: 0"; // Có thể thay bằng điểm thực tế
+    }
 
     // Restart game
     public void RestartGame()

@@ -3,7 +3,8 @@ public enum ItemType
 {
     Health,
     Passive,
-    UpgradeLazer
+    UpgradeLazer,
+    Victory
 }
 [CreateAssetMenu(fileName = "New Item", menuName = "Item System/Item")]
 public class ItemData : ScriptableObject
@@ -46,6 +47,20 @@ public class ItemData : ScriptableObject
                     playerWeapon.UpgradeLevelLazer(); // Gọi nâng cấp laser
                 }
                 break;
+
+            case ItemType.Victory:
+                Debug.Log("Chiến thắng!");
+                GameOverManager gameOverManager = GameObject.FindObjectOfType<GameOverManager>();
+                if (gameOverManager != null)
+                {
+                    gameOverManager.Victory();
+                }
+                else
+                {
+                    Debug.LogWarning("Không tìm thấy GameOverManager!");
+                }
+                break;
+
         }
     }
 }
