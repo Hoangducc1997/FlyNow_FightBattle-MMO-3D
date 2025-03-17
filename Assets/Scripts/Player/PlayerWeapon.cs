@@ -90,12 +90,17 @@ public class PlayerWeapon : MonoBehaviour
         if (playerInfo.GetCurrentPassive() < 100)
             return;
 
+        if (playerInfo.GetCurrentPassive() == 100)
+        {
+            AudioManager.Instance.PlayVFX("Full Passive");
+        }
+
         // 🟢 Khi nhấn F, kích hoạt animation nhưng **chưa bắn**
         if (isSpecialSkill)
         {
             isSpecialSkill = false; // Reset tránh spam F
             isSpecial = true; // Đánh dấu đang trong chế độ đặc biệt
-
+            AudioManager.Instance.PlayVFX("Full Passive Press F");
             if (animator != null)
             {
                 animator.SetBool("isSpecial", true);
@@ -175,7 +180,7 @@ public class PlayerWeapon : MonoBehaviour
             SetActiveLazer(currentLevel, false); // Tắt toàn bộ Lazer cấp hiện tại
             currentLevel++; // Tăng cấp độ
             SetActiveLazer(currentLevel, true); // Bật toàn bộ Lazer cấp mới
-
+            AudioManager.Instance.PlayVFX("Upgrade Lazer"); // Phát âm thanh nâng cấp
             Debug.Log($"🔺 Nâng cấp Laser lên Level {currentLevel + 1}");
         }
         else

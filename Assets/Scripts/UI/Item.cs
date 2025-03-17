@@ -29,6 +29,7 @@ public class Item : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             itemData.UseItem(other.gameObject);
+            AudioManager.Instance.PlayVFX("Item Pickup");
             Destroy(gameObject);
         }
     }

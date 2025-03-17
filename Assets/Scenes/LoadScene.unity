@@ -572,7 +572,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
       propertyPath: _vfxByNameList.Array.size
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
       propertyPath: _musicBySceneList.Array.size
@@ -584,23 +584,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
       propertyPath: _vfxByNameList.Array.data[2].Name
-      value: UFO Final Land
-      objectReference: {fileID: 0}
-    - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
-      propertyPath: _vfxByNameList.Array.data[3].Name
       value: Item Pickup
       objectReference: {fileID: 0}
     - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
-      propertyPath: _vfxByNameList.Array.data[4].Name
+      propertyPath: _vfxByNameList.Array.data[3].Name
       value: Upgrade Lazer
       objectReference: {fileID: 0}
     - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
-      propertyPath: _vfxByNameList.Array.data[5].Name
+      propertyPath: _vfxByNameList.Array.data[4].Name
       value: Full Passive
       objectReference: {fileID: 0}
     - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
-      propertyPath: _vfxByNameList.Array.data[6].Name
+      propertyPath: _vfxByNameList.Array.data[5].Name
       value: Full Passive Press F
+      objectReference: {fileID: 0}
+    - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
+      propertyPath: _vfxByNameList.Array.data[6].Name
+      value: Click UI
       objectReference: {fileID: 0}
     - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
       propertyPath: _vfxByNameList.Array.data[7].Name
@@ -617,23 +617,23 @@ PrefabInstance:
     - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
       propertyPath: _vfxByNameList.Array.data[2].AudioClip
       value: 
-      objectReference: {fileID: 8300000, guid: ab212edecffdb4c43908a27fb99aaed0, type: 3}
+      objectReference: {fileID: 8300000, guid: e356904443492464ba5e56f78fbf524a, type: 3}
     - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
       propertyPath: _vfxByNameList.Array.data[3].AudioClip
       value: 
-      objectReference: {fileID: 8300000, guid: e356904443492464ba5e56f78fbf524a, type: 3}
+      objectReference: {fileID: 8300000, guid: 2e6c4ba3539b401498a97d050e4d14b0, type: 3}
     - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
       propertyPath: _vfxByNameList.Array.data[4].AudioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 2e6c4ba3539b401498a97d050e4d14b0, type: 3}
+      objectReference: {fileID: 8300000, guid: 785a2a1475831294db2b50da3587bb74, type: 3}
     - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
       propertyPath: _vfxByNameList.Array.data[5].AudioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 785a2a1475831294db2b50da3587bb74, type: 3}
+      objectReference: {fileID: 8300000, guid: 09626f9b8ddd2e4469536b090f573fdb, type: 3}
     - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
       propertyPath: _vfxByNameList.Array.data[6].AudioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 09626f9b8ddd2e4469536b090f573fdb, type: 3}
+      objectReference: {fileID: 8300000, guid: 2c086a1eb6bafba4ea946f82981e14de, type: 3}
     - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
       propertyPath: _vfxByNameList.Array.data[7].AudioClip
       value: 
