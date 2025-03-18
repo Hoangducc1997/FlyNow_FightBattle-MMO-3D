@@ -39,5 +39,6 @@ public class LoadingManager : MonoBehaviour
             yield return null;
         }
         SceneManager.LoadScene(sceneName);
+        AudioManager.Instance.PlayVFX("Click UI");
     }
 }

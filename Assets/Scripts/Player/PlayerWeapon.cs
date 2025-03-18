@@ -24,7 +24,11 @@ public class PlayerWeapon : MonoBehaviour
     private int currentLevel = 0; // Cấp độ hiện tại    
 
     [SerializeField] private Animator animator; 
-    private bool isSpecial = false;    
+    private bool isSpecial = false;
+
+    // Biến kiểm soát để tránh lặp âm thanh
+    private bool hasPlayedFullPassive = false;
+    private bool hasPlayedSpecial = false;
 
     public bool IsPlayingTutorial { get; set; }
     private void Start()
@@ -88,10 +92,15 @@ public class PlayerWeapon : MonoBehaviour
     void ProcessSpecialSkill()
     {
         if (playerInfo.GetCurrentPassive() < 100)
-            return;
-
-        if (playerInfo.GetCurrentPassive() == 100)
         {
+            hasPlayedFullPassive = false; // Reset nếu chưa đạt 100
+            return;
+        }
+
+        // 🟢 Phát âm thanh "Full Passive" chỉ 1 lần
+        if (playerInfo.GetCurrentPassive() == 100 && !hasPlayedFullPassive)
+        {
+            hasPlayedFullPassive = true; // Đánh dấu đã phát
             AudioManager.Instance.PlayVFX("Full Passive");
         }
 
@@ -100,7 +109,9 @@ public class PlayerWeapon : MonoBehaviour
         {
             isSpecialSkill = false; // Reset tránh spam F
             isSpecial = true; // Đánh dấu đang trong chế độ đặc biệt
+
             AudioManager.Instance.PlayVFX("Full Passive Press F");
+
             if (animator != null)
             {
                 animator.SetBool("isSpecial", true);
@@ -116,7 +127,13 @@ public class PlayerWeapon : MonoBehaviour
             specialSkill.SetActive(true); // Hiển thị hiệu ứng đặc biệt
             playerInfo.ResetPassive(); // Reset Passive về 0
 
-            AudioManager.Instance.PlayVFX("Special Lazer"); // Phát âm thanh SpecialSkill    
+            // 🔥 Phát âm thanh chỉ 1 lần khi bắn
+            if (!hasPlayedSpecial)
+            {
+                hasPlayedSpecial = true; // Đánh dấu đã phát
+                AudioManager.Instance.PlayVFX("Special Lazer");
+            }
+
             var specialParticle = specialSkill.GetComponent<ParticleSystem>();
             if (specialParticle != null)
             {
@@ -131,7 +148,6 @@ public class PlayerWeapon : MonoBehaviour
             Invoke(nameof(DisableSpecialSkill), 5f);
         }
     }
-
 
     void AimSpecialSkill()
     {

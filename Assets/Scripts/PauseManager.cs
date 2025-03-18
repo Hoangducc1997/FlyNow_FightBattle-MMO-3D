@@ -20,12 +20,14 @@ public class PauseManager : MonoBehaviour
 
     public void ExitGame()
     {
+        AudioManager.Instance.PlayVFX("Click UI");
         Application.Quit();
         Debug.Log("Game has exited."); // Chỉ hoạt động trong Editor
     }
 
     public void PauseGame()
     {
+        AudioManager.Instance.PlayVFX("Click UI");
         pausePanel.SetActive(true);
         Time.timeScale = 0f; // Ngừng thời gian trong game
         Debug.Log("Game Paused.");
@@ -33,6 +35,7 @@ public class PauseManager : MonoBehaviour
 
     public void SettingGame()
     {
+        AudioManager.Instance.PlayVFX("Click UI");
         Debug.Log("Đã gọi SettingGame");
         pausePanel.SetActive(false);
     }

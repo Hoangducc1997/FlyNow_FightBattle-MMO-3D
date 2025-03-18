@@ -572,7 +572,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
       propertyPath: _vfxByNameList.Array.size
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
       propertyPath: _musicBySceneList.Array.size
@@ -604,6 +604,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
       propertyPath: _vfxByNameList.Array.data[7].Name
+      value: GameOver
+      objectReference: {fileID: 0}
+    - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
+      propertyPath: _vfxByNameList.Array.data[8].Name
+      value: Victory
+      objectReference: {fileID: 0}
+    - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
+      propertyPath: _vfxByNameList.Array.data[9].Name
       value: Click UI
       objectReference: {fileID: 0}
     - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
@@ -636,6 +644,14 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 2c086a1eb6bafba4ea946f82981e14de, type: 3}
     - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
       propertyPath: _vfxByNameList.Array.data[7].AudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c44f97605cd930d4aa09acaf45771191, type: 3}
+    - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
+      propertyPath: _vfxByNameList.Array.data[8].AudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7c1e9050a7a74084888fae2f13873510, type: 3}
+    - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
+      propertyPath: _vfxByNameList.Array.data[9].AudioClip
       value: 
       objectReference: {fileID: 8300000, guid: 2c086a1eb6bafba4ea946f82981e14de, type: 3}
     - target: {fileID: 24366333576598056, guid: a7a1d6a493c8a564eb0b1030f7f801db, type: 3}
