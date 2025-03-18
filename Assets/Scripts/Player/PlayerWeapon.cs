@@ -33,6 +33,7 @@ public class PlayerWeapon : MonoBehaviour
     public bool IsPlayingTutorial { get; set; }
     private void Start()
     {
+        Cursor.visible = false; // Ẩn con trỏ chuột
         isSpecialSkill = false; // Đảm bảo mặc định là false
         Debug.Log("Giá trị khởi tạo của isSpecialSkill: " + isSpecialSkill);
 

@@ -27,6 +27,10 @@ public class GameOverManager : MonoBehaviour
         AudioManager.Instance.PlayVFX("GameOver");
         gameOverPanel.SetActive(true);
         scoreText.text = "Score: 0"; // Có thể thay bằng điểm thực tế
+
+        // Hiện lại chuột khi game over
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
     public void GameOverWithDelay(float delay)
     {
@@ -38,6 +42,9 @@ public class GameOverManager : MonoBehaviour
         AudioManager.Instance.PlayVFX("Victory");
         victoryPanel.SetActive(true);
         scoreText.text = "Score: 0"; // Có thể thay bằng điểm thực tế
+                                     // Hiện lại chuột khi chiến thắng
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // Restart game

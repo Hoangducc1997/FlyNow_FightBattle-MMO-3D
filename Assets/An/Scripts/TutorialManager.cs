@@ -20,10 +20,11 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI guideMoveTarget;
 
     [SerializeField] private GameObject ufo;
-    
+
     [SerializeField] private Button NextTutorial;
 
     private bool isCheckMoveTarget;
+    private bool canPressSpace = false; // Biến kiểm tra có thể bấm Space không
 
     float distanceTarget;
 
@@ -40,7 +41,6 @@ public class TutorialManager : MonoBehaviour
     private void OnDestroy()
     {
         playableDirector.stopped -= TimeLineCompleted;
-
     }
 
     private void Update()
@@ -48,10 +48,16 @@ public class TutorialManager : MonoBehaviour
         if (!isCheckMoveTarget)
             return;
 
-        if(playerMovement.transform.position.z > pfxTarget.transform.position.z - distancePass)
+        if (playerMovement.transform.position.z > pfxTarget.transform.position.z - distancePass)
         {
             isCheckMoveTarget = false;
             StartCoroutine(IEGuideUserShoot());
+        }
+
+        // Nhấn Space để next tutorial
+        if (canPressSpace && Input.GetKeyDown(KeyCode.Space))
+        {
+            NextTutorial.onClick.Invoke(); // Giả lập click vào nút NextTutorial
         }
     }
 
@@ -59,12 +65,14 @@ public class TutorialManager : MonoBehaviour
     {
         StartCoroutine(IETutorialPartSix());
     }
+
     private IEnumerator IETutorialPartSix()
     {
-        
-
         NextTutorial.gameObject.SetActive(true);
-            
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        canPressSpace = true; // Cho phép bấm Space
+
         yield return new WaitForSeconds(2);
 
         tutorpart6.SetActive(false);
@@ -118,10 +126,10 @@ public class TutorialManager : MonoBehaviour
 
     private IEnumerator IELoadScene()
     {
-
         yield return new WaitForSeconds(2);
 
         SceneManager.LoadScene("Fight");
+        Cursor.visible = false; // Ẩn con trỏ chuột
     }
 
     public void FinishTutorial()
