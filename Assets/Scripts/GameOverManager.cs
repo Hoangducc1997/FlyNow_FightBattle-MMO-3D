@@ -24,6 +24,7 @@ public class GameOverManager : MonoBehaviour
     // Gọi khi Player chết
     public void GameOver()
     {
+        AudioManager.Instance.PlayVFX("GameOver");
         gameOverPanel.SetActive(true);
         scoreText.text = "Score: 0"; // Có thể thay bằng điểm thực tế
     }
@@ -34,6 +35,7 @@ public class GameOverManager : MonoBehaviour
 
     public void Victory()
     {
+        AudioManager.Instance.PlayVFX("Victory");
         victoryPanel.SetActive(true);
         scoreText.text = "Score: 0"; // Có thể thay bằng điểm thực tế
     }
@@ -41,6 +43,7 @@ public class GameOverManager : MonoBehaviour
     // Restart game
     public void RestartGame()
     {
+        AudioManager.Instance.PlayVFX("Click UI");
         gameOverPanel.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -48,6 +51,7 @@ public class GameOverManager : MonoBehaviour
     // Thoát game
     public void QuitGame()
     {
+        AudioManager.Instance.PlayVFX("Click UI");
         Application.Quit();
     }
 }

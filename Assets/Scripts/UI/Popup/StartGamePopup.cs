@@ -18,26 +18,32 @@ public class StartGamePopup : UIPopup
     {
         _StartGameBtn.onClick.AddListener(() =>
         {
+            AudioManager.Instance.PlayVFX("Click UI");
             GameSceneManager.Instance.LoadScene(SceneName.Fight);
             this.OnHide();
         });
 
         _SettingBtn.onClick.AddListener(() =>
         {
+            AudioManager.Instance.PlayVFX("Click UI");
             this.OnHide();
             UIManager.Instance.ShowPopup(PopupName.SettingPopup);
         });
 
         _TutorialBtn.onClick.AddListener(() =>
         {
+            AudioManager.Instance.PlayVFX("Click UI");
             this.OnHide();
             GameSceneManager.Instance.LoadScene(SceneName.Tutorial);
         });
         _ExitGameBtn.onClick.AddListener(() =>
         {
+            AudioManager.Instance.PlayVFX("Click UI");
+
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.ExitPlaymode();
 #else
+
                     Application.Quit();
 #endif
         });

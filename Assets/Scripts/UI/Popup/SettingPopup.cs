@@ -26,6 +26,7 @@ public class SettingPopup : UIPopup
 
     public override void OnHide()
     {
+        AudioManager.Instance.PlayVFX("Click UI");
         base.OnHide();
         Time.timeScale = 1f; // Tiếp tục thời gian trong game
         if (GameSceneManager.Instance.GetCurrentScene() == SceneName.StartGame.ToString() )UIManager.Instance.ShowPopup(PopupName.StartGamePopup);
